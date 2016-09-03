@@ -9,7 +9,6 @@ import theano.tensor as T
 from theano import In
 from theano import function
 from theano import shared
-import numpy as np
 
 rng=np.random
 N=400
