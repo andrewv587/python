@@ -27,5 +27,6 @@ class MiddleLayer:
         self.b = shared(np.zeros(n_out
             ,dtype=theano.config.floatX))
         self.y=T.tanh(T.dot(x,self.W)+self.b)
+        self.params=[self.W,self.b]
         #print self.b.get_value()
 

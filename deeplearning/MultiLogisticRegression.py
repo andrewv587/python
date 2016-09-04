@@ -25,6 +25,7 @@ class MultiLogisticRegression:
             ,dtype=theano.config.floatX))
         self.yij= T.nnet.softmax(T.dot(x,self.W)+self.b)
         self.pred = T.argmax(self.yij,axis=1)
+        self.params=[self.W,self.b]
 
     def loss(self,y):
         return -T.mean(T.log(self.yij[T.arange(y.shape[0]),y]))
@@ -45,7 +46,7 @@ class MultiLogisticRegression:
     
 #itr:iteration num
 #alpha: step length
-def run_test(datafile='data/mnist.pkl.gz',itr=400,alpha=0.01):
+def run_test(datafile='data/mnist.pkl.gz',itr=400,alpha=0.1):
     import cPickle,gzip
     with gzip.open(datafile,'rb') as f:
         train_set,valid_set,test_set=cPickle.load(f)
